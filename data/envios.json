@@ -1,0 +1,5 @@
+[
+  { "id": "retiro", "nombre": "Retiro en sucursal", "costo": 0, "plazo": "Disponible en 24 hs", "requiereDireccion": false },
+  { "id": "estandar", "nombre": "Envío estándar", "costo": 8500, "plazo": "4 a 6 días hábiles", "requiereDireccion": true },
+  { "id": "express", "nombre": "Envío express", "costo": 15000, "plazo": "24 a 48 hs", "requiereDireccion": true }
+]

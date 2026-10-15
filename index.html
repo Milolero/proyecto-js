@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TecnoMarket | Simulador de compra online</title>
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="barra-superior">
+    <div class="container d-flex align-items-center justify-content-between gap-3 flex-wrap">
+      <a class="marca" href="index.html">
+        <img src="assets/img/logo.svg" alt="" width="40" height="40">
+        <span>TecnoMarket</span>
+      </a>
+      <div class="d-flex gap-2">
+        <button id="botonUltimoPedido" class="btn btn-outline-light btn-sm" type="button">Ver último pedido</button>
+        <button id="botonBorrarDatos" class="btn btn-outline-light btn-sm" type="button">Borrar datos guardados</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-4">
+    <div id="cargando" class="text-center py-5" hidden>
+      <div class="spinner-border text-warning" role="status"></div>
+      <p class="mt-3 mb-0">Cargando productos...</p>
+    </div>
+
+    <div id="bloqueError" class="alert alert-danger d-flex justify-content-between align-items-center gap-3" role="alert" hidden>
+      <span id="mensajeError"></span>
+      <button id="botonReintentar" class="btn btn-danger btn-sm" type="button">Reintentar</button>
+    </div>
+
+    <div class="row g-4">
+      <section class="col-lg-8" aria-labelledby="tituloCatalogo">
+        <h1 id="tituloCatalogo" class="h3 mb-3">Catálogo</h1>
+
+        <div class="row g-2 mb-4">
+          <div class="col-md-5">
+            <input id="filtroTexto" class="form-control" type="search" placeholder="Buscar producto" aria-label="Buscar producto">
+          </div>
+          <div class="col-6 col-md-3">
+            <select id="filtroCategoria" class="form-select" aria-label="Filtrar por categoría">
+              <option value="todas">Todas las categorías</option>
+            </select>
+          </div>
+          <div class="col-6 col-md-3">
+            <select id="filtroOrden" class="form-select" aria-label="Ordenar productos">
+              <option value="relevancia">Orden original</option>
+              <option value="menor">Menor precio</option>
+              <option value="mayor">Mayor precio</option>
+              <option value="nombre">Nombre A-Z</option>
+            </select>
+          </div>
+          <div class="col-md-1 d-grid">
+            <button id="botonLimpiarFiltros" class="btn btn-outline-secondary" type="button" title="Limpiar filtros">&times;</button>
+          </div>
+        </div>
+
+        <div id="catalogo" class="row g-3"></div>
+      </section>
+
+      <aside class="col-lg-4">
+        <div class="panel-carrito">
+          <h2 class="h4 mb-3">Tu carrito <span id="contadorCarrito" class="badge text-bg-warning">0</span></h2>
+          <div id="listaCarrito"></div>
+
+          <div id="bloqueEnvio" class="mt-3" hidden>
+            <label for="selectorEnvio" class="form-label fw-semibold">Método de entrega</label>
+            <select id="selectorEnvio" class="form-select"></select>
+            <p id="detalleEnvio" class="form-text mb-0"></p>
+          </div>
+
+          <dl id="resumenCompra" class="resumen mt-3" hidden>
+            <div><dt>Subtotal</dt><dd id="valorSubtotal"></dd></div>
+            <div><dt>Envío</dt><dd id="valorEnvio"></dd></div>
+            <div class="total"><dt>Total</dt><dd id="valorTotal"></dd></div>
+          </dl>
+
+          <div id="accionesCarrito" class="d-grid gap-2 mt-3" hidden>
+            <button id="botonContinuar" class="btn btn-primary" type="button">Continuar con la compra</button>
+            <button id="botonVaciarCarrito" class="btn btn-outline-danger btn-sm" type="button">Vaciar carrito</button>
+          </div>
+        </div>
+
+        <form id="formularioCompra" class="panel-carrito mt-3" novalidate hidden>
+          <h2 class="h5 mb-3">Datos de la compra</h2>
+          <div class="mb-2">
+            <label for="campoNombre" class="form-label">Nombre y apellido</label>
+            <input id="campoNombre" name="nombre" class="form-control" type="text" autocomplete="name">
+            <div id="error-nombre" class="invalid-feedback"></div>
+          </div>
+          <div class="mb-2">
+            <label for="campoEmail" class="form-label">Email</label>
+            <input id="campoEmail" name="email" class="form-control" type="email" autocomplete="email">
+            <div id="error-email" class="invalid-feedback"></div>
+          </div>
+          <div id="grupoDireccion" class="mb-2" hidden>
+            <label for="campoDireccion" class="form-label">Dirección de entrega</label>
+            <input id="campoDireccion" name="direccion" class="form-control" type="text" autocomplete="street-address">
+            <div id="error-direccion" class="invalid-feedback"></div>
+          </div>
+          <div class="mb-3">
+            <label for="campoPago" class="form-label">Medio de pago</label>
+            <select id="campoPago" name="medioPago" class="form-select">
+              <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+              <option value="Tarjeta de débito">Tarjeta de débito</option>
+              <option value="Transferencia bancaria">Transferencia bancaria</option>
+              <option value="Efectivo al retirar">Efectivo al retirar</option>
+            </select>
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-success" type="submit">Confirmar compra</button>
+            <button id="botonCancelarCompra" class="btn btn-outline-secondary btn-sm" type="button">Volver al carrito</button>
+          </div>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="pie text-center py-3">
+    Milolero. 2026 
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

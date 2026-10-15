@@ -1,0 +1,142 @@
+:root {
+  --color-fondo: #f6f4f1;
+  --color-oscuro: #1d2433;
+  --color-acento: #ff6b35;
+  --color-texto: #2a2f3a;
+}
+
+body {
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.barra-superior {
+  background: var(--color-oscuro);
+  color: #fff;
+  padding: 0.9rem 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tarjeta-producto {
+  background: #fff;
+  border: 1px solid #e4e0da;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-producto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.tarjeta-producto .cuerpo {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.35rem;
+}
+
+.precio {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.btn-primary,
+.btn-primary:disabled {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #e85a27;
+  border-color: #e85a27;
+}
+
+.panel-carrito {
+  background: #fff;
+  border: 1px solid #e4e0da;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+aside .panel-carrito:first-child {
+  position: sticky;
+  top: 1rem;
+}
+
+.fila-carrito {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee9e3;
+}
+
+.fila-carrito:last-child {
+  border-bottom: 0;
+}
+
+.control-cantidad {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-cantidad button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  line-height: 1;
+}
+
+.resumen div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0.2rem 0;
+}
+
+.resumen dt,
+.resumen dd {
+  margin: 0;
+}
+
+.resumen .total {
+  border-top: 2px solid var(--color-oscuro);
+  margin-top: 0.4rem;
+  padding-top: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.pie {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+@media (max-width: 991px) {
+  aside .panel-carrito:first-child {
+    position: static;
+  }
+}

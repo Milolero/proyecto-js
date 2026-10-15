@@ -1,0 +1,12 @@
+[
+  { "id": 1, "nombre": "Notebook Lenovo IdeaPad 15", "categoria": "Notebooks", "descripcion": "Ryzen 5, 8 GB RAM, SSD 512 GB", "precio": 899000, "stock": 5, "imagen": "assets/img/notebooks.svg" },
+  { "id": 2, "nombre": "Notebook ASUS Vivobook 14", "categoria": "Notebooks", "descripcion": "Core i5, 16 GB RAM, SSD 512 GB", "precio": 1050000, "stock": 3, "imagen": "assets/img/notebooks.svg" },
+  { "id": 3, "nombre": "Notebook HP Pavilion 15", "categoria": "Notebooks", "descripcion": "Core i7, 16 GB RAM, SSD 1 TB", "precio": 1250000, "stock": 4, "imagen": "assets/img/notebooks.svg" },
+  { "id": 4, "nombre": "Auriculares Sony WH-CH520", "categoria": "Auriculares", "descripcion": "Bluetooth, 50 horas de batería", "precio": 98000, "stock": 10, "imagen": "assets/img/auriculares.svg" },
+  { "id": 5, "nombre": "Auriculares JBL Tune 510BT", "categoria": "Auriculares", "descripcion": "Bluetooth, carga rápida", "precio": 79000, "stock": 12, "imagen": "assets/img/auriculares.svg" },
+  { "id": 6, "nombre": "Samsung Galaxy A55", "categoria": "Celulares", "descripcion": "256 GB, 8 GB RAM, cámara 50 MP", "precio": 620000, "stock": 8, "imagen": "assets/img/celulares.svg" },
+  { "id": 7, "nombre": "Motorola Edge 40", "categoria": "Celulares", "descripcion": "256 GB, pantalla pOLED 144 Hz", "precio": 580000, "stock": 6, "imagen": "assets/img/celulares.svg" },
+  { "id": 8, "nombre": "Mouse Logitech M170", "categoria": "Accesorios", "descripcion": "Inalámbrico, receptor USB", "precio": 18500, "stock": 20, "imagen": "assets/img/accesorios.svg" },
+  { "id": 9, "nombre": "Teclado Redragon Kumara", "categoria": "Accesorios", "descripcion": "Mecánico, switches rojos", "precio": 52000, "stock": 9, "imagen": "assets/img/accesorios.svg" },
+  { "id": 10, "nombre": "Cargador USB-C 65W", "categoria": "Accesorios", "descripcion": "Carga rápida para notebook y celular", "precio": 32000, "stock": 15, "imagen": "assets/img/accesorios.svg" }
+]
